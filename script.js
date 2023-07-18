@@ -1,9 +1,3 @@
-// const sectionSeg = document.querySelectorAll('.seg')
-// const sectionTerc = document.querySelectorAll('.terc')
-// const sectionQua = document.querySelectorAll('.qua')
-// const sectionQuin = document.querySelectorAll('.quin')
-// const sectionSex = document.querySelectorAll('.sex')
-// const sectionSab = document.querySelectorAll('.sab')
 
 const workOuts = [
   {
@@ -185,21 +179,12 @@ const workOuts = [
   },
 ];
 
-/* 
-          <!-- <section class="container-dia segunda">
-        <h2>workOuts[i].diaSemana</h2>
-        <div class="row hidden seg">
-          <p>workOuts[i].treinoDia[j].exercicio : workOuts[i].treinoDia[j].series</p>
-          <label for="">
-            <input type="checkbox">
-          </label>
-*/
-
 for(let i=0; i<workOuts.length; i++) {
   const main = document.querySelector('main')
 
   const section = document.createElement('section')                               
-  section.classList.add('container-dia')                                          
+  section.classList.add('container-dia')
+  section.id = 'dia_'+[i]                                          
 
   const h2 = document.createElement('h2')                                         
   h2.innerText = `${workOuts[i].diaSemana}`
@@ -207,10 +192,22 @@ for(let i=0; i<workOuts.length; i++) {
   
   section.append(h2)
   main.appendChild(section)
+
+  const sectionZero = document.getElementById('dia_'+[i])
+const sectiontittle = sectionZero.querySelector('h2')
+
+sectiontittle.addEventListener('click', function(event){
+
+  const allElements = sectionZero.querySelectorAll('div')
+
+  for(let i=0; i<allElements.length; i++) {
+    allElements[i].classList.toggle('hidden')
+  }
+})
   
   for(let j=0; j<workOuts[i].treinoDia.length; j++) {
     const div = document.createElement('div')                                       
-    div.classList.add('row')                                                        
+    div.classList.add('row', 'hidden')                                                        
     
     section.appendChild(div)
 
@@ -225,4 +222,8 @@ for(let i=0; i<workOuts.length; i++) {
     div.append(p, label) 
   }
 }
+
+
+
+
 
