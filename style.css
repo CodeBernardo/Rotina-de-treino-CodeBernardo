@@ -58,7 +58,7 @@ main h1 {
 .row p {
   display: flex;
   text-align: left;
-  width: 95%;
+  width: 85%;
 }
 
 label {
